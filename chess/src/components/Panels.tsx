@@ -57,7 +57,7 @@ export function ShawnCard({
       <div className="p-4 flex gap-3.5 items-center">
         <div className="relative shrink-0">
           <img
-            src="/img/shawn.png"
+            src="./img/shawn.png"
             alt="Shawn"
             className="size-16 rounded-lg object-cover ring-1 ring-[#e2a24a]/40"
           />
@@ -150,7 +150,7 @@ export function BearPolaroid() {
     <div className="bg-[#16110b] border border-[#8a5a3c]/25 rounded-xl p-3.5">
       <div className="flex gap-3 items-center">
         <img
-          src="/img/bear.png"
+          src="./img/bear.png"
           alt="Bear"
           className="size-12 rounded-lg object-cover ring-1 ring-[#8a5a3c]/50 floaty"
           style={{ ["--rot" as string]: "-3deg" }}
