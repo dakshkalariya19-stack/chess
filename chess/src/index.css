@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0d0b08;
+  --coal: #171208;
+  --panel: #1b1610;
+  --panel2: #221b14;
+  --paper: #f2ead9;
+  --cream: #eadfc3;
+  --muted: #a8977a;
+  --amber: #e2a24a;
+  --amber2: #f0c179;
+  --rust: #c8462b;
+  --board-l: #ecdfc1;
+  --board-d: #96684a;
+  --line: rgba(226, 162, 74, 0.16);
+}
+
+html,
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(226, 162, 74, 0.35);
+  color: #fff8ea;
+}
+
+.font-display {
+  font-family: "Fraunces", Georgia, serif;
+}
+.font-mono2 {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+/* ---------- grain ---------- */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- vignette backdrop ---------- */
+.backdrop-glow {
+  background:
+    radial-gradient(1200px 600px at 70% -10%, rgba(226, 162, 74, 0.08), transparent 60%),
+    radial-gradient(900px 500px at 10% 110%, rgba(200, 70, 43, 0.07), transparent 60%),
+    var(--ink);
+}
+
+/* ---------- marquee ---------- */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 36s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ---------- chat bubbles ---------- */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.msg-in {
+  animation: rise 0.35s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+
+@keyframes blinkDot {
+  0%, 80%, 100% { opacity: 0.25; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-3px); }
+}
+.typing-dot {
+  animation: blinkDot 1.1s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+.pulse-soft { animation: pulseSoft 1.6s ease-in-out infinite; }
+
+/* ---------- board check glow ---------- */
+@keyframes checkGlow {
+  0%, 100% { box-shadow: inset 0 0 0 6px rgba(200, 70, 43, 0.0); }
+  50% { box-shadow: inset 0 0 0 6px rgba(200, 70, 43, 0.75); }
+}
+.check-glow { animation: checkGlow 0.9s ease-in-out infinite; }
+
+/* ---------- scrollbars ---------- */
+.nice-scroll::-webkit-scrollbar { width: 6px; }
+.nice-scroll::-webkit-scrollbar-track { background: transparent; }
+.nice-scroll::-webkit-scrollbar-thumb {
+  background: rgba(226, 162, 74, 0.25);
+  border-radius: 99px;
+}
+.nice-scroll::-webkit-scrollbar-thumb:hover { background: rgba(226, 162, 74, 0.45); }
+
+/* ---------- pieces ---------- */
+.piece-svg {
+  filter: drop-shadow(0 3px 3px rgba(12, 7, 3, 0.5));
+}
+.piece-wrap {
+  transition:
+    left 0.28s cubic-bezier(0.3, 0.9, 0.25, 1),
+    top 0.28s cubic-bezier(0.3, 0.9, 0.25, 1),
+    transform 0.18s ease,
+    opacity 0.2s ease;
+  will-change: left, top;
+}
+.piece-lift { transform: scale(1.12) translateY(-2%); z-index: 30; }
+
+/* ---------- polaroid float ---------- */
+@keyframes floaty {
+  0%, 100% { transform: rotate(var(--rot, 0deg)) translateY(0px); }
+  50% { transform: rotate(var(--rot, 0deg)) translateY(-7px); }
+}
+.floaty { animation: floaty 6s ease-in-out infinite; }
+
+/* ---------- intro outline word ---------- */
+.outline-word {
+  -webkit-text-stroke: 1px rgba(226, 162, 74, 0.28);
+  color: transparent;
+  letter-spacing: 0.08em;
+  user-select: none;
+}
+
+/* ---------- misc ---------- */
+.btn-press {
+  transition: transform 0.12s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.btn-press:active { transform: scale(0.96); }
+
+@keyframes meterFill {
+  from { width: 0%; }
+}
+.meter-anim { animation: meterFill 0.9s cubic-bezier(0.2, 0.9, 0.2, 1) both; }
+
+@keyframes crownSway {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(5deg); }
+}
+.crown-sway { animation: crownSway 2.4s ease-in-out infinite; transform-origin: bottom center; }
