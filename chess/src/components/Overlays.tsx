@@ -118,7 +118,7 @@ export function IntroOverlay({ onStart }: { onStart: (side: Color) => void }) {
               className="floaty relative ml-auto w-[78%] max-w-[380px] bg-[#f4ead3] p-3 pb-4 shadow-[0_24px_60px_rgba(0,0,0,0.55)]"
               style={{ ["--rot" as string]: "-2.5deg" }}
             >
-              <img src="/img/shawn.png" alt="Shawn" className="w-full aspect-square object-cover" />
+              <img src="./img/shawn.png" alt="Shawn" className="w-full aspect-square object-cover" />
               <div className="mt-2.5 flex items-center justify-between font-mono2 text-[10px] text-[#5c4a33]">
                 <span>S. Petrovich — qualified, 2009</span>
                 <Crown className="size-3" />
@@ -128,7 +128,7 @@ export function IntroOverlay({ onStart }: { onStart: (side: Color) => void }) {
               className="floaty absolute -bottom-2 right-0 w-[42%] max-w-[185px] bg-[#f4ead3] p-2.5 pb-3 shadow-[0_18px_40px_rgba(0,0,0,0.5)]"
               style={{ ["--rot" as string]: "4deg", animationDelay: "-2.5s" }}
             >
-              <img src="/img/bear.png" alt="Bear" className="w-full aspect-square object-cover" />
+              <img src="./img/bear.png" alt="Bear" className="w-full aspect-square object-cover" />
               <div className="mt-2 font-mono2 text-[9px] text-[#5c4a33] flex items-center gap-1">
                 <PawPrint className="size-3" /> Bear — best friend
               </div>
